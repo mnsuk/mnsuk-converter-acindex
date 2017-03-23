@@ -1,5 +1,6 @@
 # mnsuk-converter-acindex
 
+## Building
 
     Copy the following jar files from your WEX lib/java directory into the lib directory of the project. 
     
@@ -26,12 +27,12 @@
     
     Run 'ant package' from the root of the project directory. 
     
-    Deployment
+    ## Deployment
     
     1. Copy the mnsuk-converter-acindex-x.x.x-distrib.zip file from the target folder to the root of your Engine install dir
-    2. Unzip that archive
-    3. In the Engine Admin Tool, navigate to Management -> Installation -> Repository and click 'unpack' to add the converters's xml node to the repository.
-    4. Add the node "MNSUK Content Analytics Text Document Add to Index" like any other converter to the collection of your choice.
+    1. Unzip that archive
+    1. In the Engine Admin Tool, navigate to Management -> Installation -> Repository and click 'unpack' to add the converters's xml node to the repository.
+    1. Add the node "MNSUK Content Analytics Text Document Add to Index" like any other converter to the collection of your choice.
 
 
     

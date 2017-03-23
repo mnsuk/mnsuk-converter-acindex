@@ -1,18 +1,20 @@
 # mnsuk-converter-acindex
 
+This converter sends text/plain documents to the Watson Explorer Content Analytics' annotation pipeline from a conversion pipeline in Engine for indexing in the Content Analytics server.
+
 ## Building
 
 Copy the following jar files from your WEX lib/java directory into the lib directory of the project. 
     
-* connectors-x.x.x-vx.jar
-* converters-x.x.x.jar
-* java-xml-utils-x.x.x.jar
-* jpf-x.x.jar
-* libmisc-x.x.x-vx.jar
-* log4j-x.x.x.jar
-* slf4j-api-x.x.x.jar
-* slf4j-log4jx.x.x.jar
-* vcrypt-java-x.x.x.jar
+* connectors-x.jar  (tested with 8.8.2-v0)
+* converters-x.jar (tested with 3.2.3)
+* java-xml-utils-x.jar (tested with 1.0.0)
+* jpf-x.jar (tested with 1.5)
+* libmisc-x.jar (tested with 8.8.2-v0)
+* log4j-x.jar (tested with 1.2.14)
+* slf4j-api-x.jar (tested with 1.6.1)
+* slf4j-log4j12-.x.jar (tested with 1.6.1)
+* vcrypt-java-x.jar (tested with 4.1.0)
     
 Copy the following open source jar files from usual sources into the lib directory of the project.
     
@@ -21,7 +23,7 @@ Copy the following open source jar files from usual sources into the lib directo
 * commons-logging-1.1.1.jar
 * json-20140107.jar
     
-Get a copy of the wrapper libraries for the WCA REST api from: 
+The following legacy ICA REST api libraries are included, they'll get replaced in due course.
 * ica-rest-api-nlp.jar
 * ica-rest-api-document-add.jar
     

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
+<!-- replace 'bootstrap' with your plugin's name -->
+<plugin id="acindex.plugin" version="!PROJECT_VERSION">
+   <attributes>
+      <attribute id="name" value="acindex-converter"/>
+      <attribute id="description" value="Add content to AC Index Java Converter"/>
+   </attributes>
+  <requires>
+    <import plugin-id="main.plugin" />
+  </requires>
+  <runtime>
+    <!-- <library id="converter-bootstrap" path="lib/!PROJECT_JAR" type="code"/> -->
+    <!-- If your converter requires additional dependencies that need to be packaged
+         you will need to include those here as well -->
+    <!-- Example: If you wanted to include commons imaging:
+         <library id="commons-imaging:commons-imaging:jar:1.0-SNAPSHOT" path="lib/commons-imaging-1.0-SNAPSHOT.jar" type="code"/>
+     -->
+     <library id="bootstrap-classes" path="bin/" type="code"/>
+      <library id="icarest-lib" path="lib/ica-rest-api-nlp.jar" type="code"/>
+      <library id="icarest-doc" path="lib/ica-rest-api-document-add.jar" type="code"/>
+      <library id="commonscodec-lib" path="lib/commons-codec-1.3.jar" type="code"/>
+      <library id="commonshttpclient-lib" path="lib/commons-httpclient-3.1.jar" type="code"/>
+      <library id="commonslogging-lib" path="lib/commons-logging-1.1.1.jar" type="code"/> 
+      <library id="json-lib" path="lib/json-20140107.jar" type="code"/> 
+  </runtime>
+  <extension plugin-id="main.plugin" point-id="com.ibm.dataexplorer.converter.ByteArrayConverter"
+             id="acindex-converter">
+    <parameter id="class" value="com.mnsuk.converter.ACIndex"/>
+  </extension>
+</plugin>

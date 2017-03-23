@@ -1,0 +1,99 @@
+<function name="mnsuk-converter-acindex" products="all"
+	modified-by="data-explorer-admin" type="converter-java" type-in="application/vxml-unnormalized"
+	type-out="application/vxml-unnormalized" max-elt-id="33" modified="1488902251">
+	<prototype>
+		<label name="label">MNSUK Content Analytics Text Document Add to Index</label>
+		<description name="description">
+<![CDATA[
+      This converter sends text/plain documents to the Watson Explorer Content Analytics' annotation
+      pipeline for indexing in the Content Analytics server.
+      It should be run after normalisation if you want to submit urls and filenames as metadata.
+    ]]>
+</description>
+<declare name="wca-hostname" type="string" required="required">
+<label>Hostname of the Content Analytics server</label>
+<description>
+<![CDATA[
+        Hostname or IP address of the Content Analytics server.
+      ]]>
+</description>
+</declare>
+<declare name="wca-port" type="string" required="required">
+<label>Port number of the Content Analytics server</label>
+<description>
+<![CDATA[
+        Port number of the Content Analytics server. The default would be 8390
+      ]]>
+</description>
+</declare>
+<declare name="collection-id" type="string" required="required">
+<label>Collection ID</label>
+<description>
+<![CDATA[
+        ID of the annotation collection to be used.
+        This collection must be setup in the Annotation Administration Console or
+        the Content Analytics Administration Console.
+        The collection ID can be specified when creating a collection under the
+        'Advanced options' section.
+        The collection ID can be found in the Annotation Administration Console
+        by navigating to Actions: 'View collection settings'.
+      ]]>
+</description>
+</declare>
+<declare name="username" type="string">
+<label>User Name</label>
+<description>
+        User name to use for authentication with the Content Analytics server.     
+</description>
+</declare>
+<declare name="password" type="password">
+<label>Password</label>
+<description>
+        Password to use for authentication with the Content Analytics server.    
+</description>
+</declare>
+<declare to-attribute="option-value" name="option-name-value-pairs" type="replacement-pair-list" replace-text="Content Element Name" with-text="AC Server Index Field Name" replacement-node-name="option-data" from-attribute="option-name">
+	<label name="label">Content Configuration</label>
+	<description name="description">
+		<![CDATA[
+			Add mappings between content elements and Content Analytics server index fields.
+			At a minimum make sure you map an element to the 'body' field, this is the main
+			content of the text/plain document. Any other fields specified must exist as index 
+			fields in the target collection.
+		]]>
+	</description>
+</declare>
+	</prototype>
+	<!--  Reformat option-name-value pairs -->
+	<declare name="all-user-options" type="nodeset"/>
+	<set-var name="all-user-options">
+		<for-each select="$option-name-value-pairs" as="x">
+			<option>
+				<attribute name="name">field</attribute>
+				<value-of select="$x/@option-name" />:<value-of select="$x/@option-value" />
+			</option>
+		</for-each>
+	</set-var>
+	<parser type="java">
+		<copy-of select="$all-user-options" />
+		<option name="install-dir">
+			<value-of select="viv:value-of('install-dir', 'option')" />
+		</option>
+		<option name="plugin-name">acindex.plugin@acindex-converter</option>
+		<option name="wca-hostname">
+			<value-of select="$wca-hostname" />
+		</option>
+		<option name="wca-port">
+			<value-of select="$wca-port" />
+		</option>	
+		<option name="collection-id">
+			<value-of select="$collection-id" />
+		</option>
+		<option name="username">
+			<value-of select="$username" />
+		</option>
+		<option name="password">
+			<value-of select="$password" />
+		</option>
+	</parser>
+</function>

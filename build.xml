@@ -135,7 +135,7 @@
     <copy todir="target/plugin-zip/META-INF"
           file="target/MANIFEST.MF"/>
     <copy tofile="target/plugin-zip/plugin.xml"
-      file="plugin/plugin.ant" />
+      file="plugin/plugin.xml" />
     <replace file="target/plugin-zip/plugin.xml" token="!PROJECT_JAR" value="${ant.project.name}-${template.build.version}.jar"/>
     <replace file="target/plugin-zip/plugin.xml" token="!PROJECT_VERSION" value="${template.build.version}"/>
 
